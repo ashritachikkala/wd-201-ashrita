@@ -73,3 +73,56 @@ puts salute("Nelson Rolihlahla Mandela", "hello")
 puts salute("Sir Alan Turing", "welcome")
 =end
 
+=begin
+#object oriented programming -> classes
+class Student
+  def initialize(roll_no, name)
+    @roll_no = roll_no
+    @name = name
+    @is_enrolled = false
+  end
+  def is_enrolled
+    @is_enrolled =  true
+  end
+  def name
+    @name
+  end
+  def roll_no
+    @roll_no
+  end
+end
+
+class Course
+  def initialize(name, students)
+    @name = name
+    @students = students
+  end
+
+  # Add more students even after the object is initialized.
+  def enroll(new_student)
+    @students.push(new_student)
+  end
+
+  def is_student_enrolled?(roll_no)
+    @students.any? {|student| student.roll_no == roll_no }
+  end
+
+  def get_student(roll_no)
+    @students.find {|student| student.roll_no == roll_no }
+  end
+end
+
+saas = Course.new("SaaS 201", [
+  Student.new(15, "Rita"),
+  Student.new(79, "ASH")
+])
+
+puts saas.is_student_enrolled?(715)
+saas.enroll(Student.new(800, "Ned"))
+puts saas.is_student_enrolled?(800)   # true
+puts saas.get_student(800).name
+=end
+
+
+array = ["value1", "value2"]    
+puts array.to_s.gsub('"', '')
