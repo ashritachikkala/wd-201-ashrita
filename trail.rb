@@ -1,10 +1,75 @@
 #ask for a list of todos
 
-puts "what is your next todo?"
-next_todo = gets
+#puts "what is your next todo?"
+#next_todo = gets
 
-puts "\n\n\n" #carriage return
+#puts "\n\n\n" #carriage return
 
-puts "[ ] #{next_todo}" #string interpolation
+#puts "[ ] #{next_todo}" #string interpolation
 
-#just a check
+#names = [["Jhumpa", "Lahiri"], ["J. K", "Rowling"], ["Devdutt", "Pattanaik"]]
+#new_join = names.map {|name| name.join(' ')}
+#print new_join
+
+#books = ["Design as Art", "Anathem", "Shogun"]
+#authors = ["Bruno Munari", "Neal Stephenson", "James Clavell"]
+#puts books.map.with_index{|book ,i| "#{book} was written by #{authors[i]}"}
+
+#todos = [
+    #["Pay rent", "money"],
+    #["Arrange books", "organize"],
+    #["Pay taxes", "money"],
+    #["Buy groceries", "food"]
+ # ]
+
+#organize = Array.new
+#food = Array.new
+#todos.find {|todo| todo=="money"}
+
+#ruby hashes
+#books = ["Design as Art", "Anathem", "Shogun"]
+#authors = ["Bruno Munari", "Neal Stephenson", "James Clavell"]
+#hash ={}
+#i=0
+#authors.each do |author|
+ # hash[author[0].to_sym.downcase] = books[i]
+#end
+#puts hash
+
+=begin
+todos = [
+  ["Send invoice", "money"],
+  ["Clean room", "organize"],
+  ["Pay rent", "money"],
+  ["Arrange books", "organize"],
+  ["Pay taxes", "money"],
+  ["Buy groceries", "food"]
+]
+
+hash={}
+hash[":money"]=[]
+hash[":food"] =[]
+hash[":organize"]=[]
+
+todos.each{|work,name| 
+  if "#{name}" == "money"
+    hash[":money"].push("#{work}")
+  elsif "#{name}" == "organize"
+    hash[":organize"].push("#{work}")
+  elsif "#{name}" == "food"
+    hash[":food"].push("#{work}")
+  end
+  }
+  puts hash
+=end
+
+#functions
+=begin
+def salute(name,salutation)
+  names=name.split(' ')
+  return "#{salutation.capitalize} Mr. #{names[names.length - 1]}"
+end
+puts salute("Nelson Rolihlahla Mandela", "hello")
+puts salute("Sir Alan Turing", "welcome")
+=end
+
