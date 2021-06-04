@@ -7,23 +7,22 @@ class Todo
     @completed = completed
   end
 
-  def due_date
-    @due_date
+  def to_displayable_string
+    display_status = @completed ? "[X]" : "[ ]"
+    display_date = @due_date != Date.today ? @due_date : nil
+    "#{display_status} #{@text} #{display_date}"
   end
 
-  def to_displayable_string
-    todisplay_checkbox = []
-    if @completed
-      todisplay_checkbox = todisplay_checkbox.push("X")
-    else
-      todisplay_checkbox = todisplay_checkbox.push(" ")
-    end
+  def due_today?
+    Date.today == @due_date
+  end
 
-    
-    if @due_date != Date.today
-      todisplay_date = due_date
-    end
-    return "#{todisplay_checkbox.to_s.gsub('"', '')} #{@text} #{todisplay_date} "
+  def overdue?
+    Date.today > @due_date
+  end
+
+  def due_later?
+    Date.today < @due_date
   end
 end
 
@@ -33,19 +32,19 @@ class TodosList
   end
 
   def due_today
-    TodosList.new(@todos.filter { |todo| todo.due_date == Date.today })
+    TodosList.new(@todos.filter { |todo| todo.due_today? })
   end
 
   def overdue
-    TodosList.new(@todos.filter { |todo| todo.due_date < Date.today })
+    TodosList.new(@todos.filter { |todo| todo.overdue? })
   end
 
   def due_later
-    TodosList.new(@todos.filter { |todo| todo.due_date > Date.today })
+    TodosList.new(@todos.filter { |todo| todo.due_later? })
   end
 
-  def add(newObject)
-    @todos.append(newObject)
+  def add(todo)
+    @todos.append(todo)
   end
 
   def to_displayable_list
