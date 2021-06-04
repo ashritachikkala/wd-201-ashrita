@@ -26,13 +26,13 @@ class Todo < ActiveRecord::Base
   def self.show_list
     puts "My Todo-list\n\n"
     puts "Overdue"
-    puts overdue.map {|todo| todo.to_displayable_string}
+    puts overdue.map { |todo| todo.to_displayable_string }
     puts "\n\n"
     puts "Due Today"
-    puts due_today.map {|todo| todo.to_displayable_string}
+    puts due_today.map { |todo| todo.to_displayable_string }
     puts "\n\n"
     puts "Due Later"
-    puts due_later.map {|todo| todo.to_displayable_string}
+    puts due_later.map { |todo| todo.to_displayable_string }
   end
 
   def self.add_task(todo)
